@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achrhal Chaouia - Construction Maroc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff7f00;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%23333"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: #ff7f00;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #e67300;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+        
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .value-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Services section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #ff7f00;
+            margin-bottom: 1rem;
+        }
+        
+        /* Portfolio section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .portfolio-item {
+            background: #333;
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        /* Why choose us */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .advantage-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Contact section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #ff7f00;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Achrhal Chaouia</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Réalisations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Construire aujourd'hui les projets de demain</h1>
+                <p>Achrhal Chaouia est une entreprise de construction basée au Maroc, spécialisée dans les travaux de bâtiment, gros œuvre, rénovation et aménagement.</p>
+                <button class="cta-button">Demander un devis gratuit</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>À propos de nous</h2>
+            <div class="about-content">
+                <div>
+                    <h3>Notre histoire</h3>
+                    <p>Depuis notre création, nous nous engageons à offrir des services de construction de qualité supérieure au Maroc. Notre entreprise a été fondée avec une vision claire : transformer le paysage marocain avec des projets innovants et durables.</p>
+                    
+                    <h3>Notre mission</h3>
+                    <p>Offrir des solutions fiables et innovantes dans le domaine de la construction, en respectant les plus hauts standards de qualité et de sécurité.</p>
+                </div>
+                <div>
+                    <h3>Nos valeurs</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <h4>Qualité</h4>
+                            <p>Excellence dans chaque détail</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Sécurité</h4>
+                            <p>Environnement de travail sécurisé</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Respect des délais</h4>
+                            <p>Livraison ponctuelle des projets</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Innovation</h4>
+                            <p>Solutions modernes et efficaces</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Nos services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Construction neuve</h3>
+                    <p>Immeubles, villas, locaux professionnels</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔨</div>
+                    <h3>Rénovation et réhabilitation</h3>
+                    <p>Bâtiments anciens, modernisation</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Travaux publics</h3>
+                    <p>Routes, fondations, infrastructures</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏡</div>
+                    <h3>Aménagement intérieur & extérieur</h3>
+                    <p>Design et aménagement complet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>Nos réalisations</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">Projet immeuble résidentiel</div>
+                <div class="portfolio-item">Villa moderne</div>
+                <div class="portfolio-item">Chantier public</div>
+                <div class="portfolio-item">Rénovation commerciale</div>
+                <div class="portfolio-item">Aménagement paysager</div>
+                <div class="portfolio-item">Infrastructure routière</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Pourquoi nous choisir ?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <h3>Expérience</h3>
+                    <p>Des années d'expertise dans le secteur de la construction</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>Équipe qualifiée</h3>
+                    <p>Professionnels certifiés et expérimentés</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>Normes respectées</h3>
+                    <p>Conformité aux normes marocaines et internationales</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>Engagement qualité</h3>
+                    <p>Garantie de qualité et respect des délais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Demande de devis</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contactez-nous</h3>
+                    <p>📞 Téléphone/WhatsApp: +212 XXX XXX XXX</p>
+                    <p>📧 Email: contact@achrhalchaouia.ma</p>
+                    <p>🏢 Adresse: Maroc</p>
+                    
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+                
+                <form>
+                    <input type="text" placeholder="Nom complet" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Téléphone" required>
+                    <select required>
+                        <option value="">Type de projet</option>
+                        <option value="construction">Construction neuve</option>
+                        <option value="renovation">Rénovation</option>
+                        <option value="public">Travaux publics</option>
+                        <option value="amenagement">Aménagement</option>
+                    </select>
+                    <input type="text" placeholder="Budget estimatif">
+                    <textarea placeholder="Détails du projet"></textarea>
+                    <button type="submit" class="cta-button">Envoyer ma demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
